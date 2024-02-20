@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using System.Net
+@{
+    var request = ViewContext.HttpContext.Request;
+    string currentPageUrl = $"{request.Scheme}://{request.Host}{request.Path}{request.QueryString}";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div>
+        <p>@currentPageUrl</p>
+        <div id="fb-root"></div>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch?v=f7BJFTEbc10" target="_blank" rel="noopener">
+            Share on fb
+        </a> <br />
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.youtube.com/watch?v=f7BJFTEbc10" target="_blank">Share on LinkedIn</a><br />
+        <a href="mailto:?subject=Your%20Subject&body=Check%20out%20this%20link:%20@https://www.youtube.com/watch?v=f7BJFTEbc10">Share via Gmail</a> <br />
+        <a href="https://www.pinterest.com/pin/create/button/?url=https://www.youtube.com/watch?v=f7BJFTEbc10&media=image_url&description=Your%20Description%20Here" target="_blank">Share on Pinterest</a> <br />
+        <a href="https://twitter.com/intent/tweet?url=https://www.youtube.com/watch?v=f7BJFTEbc10&text=Your%20Tweet%20Text%20Here" target="_blank">Share on Twitter</a>
+    </div>
+</div>
+
+<script>
+    var currentPageUrl = window.location.href;
+    console.log(currentPageUrl);
+</script>

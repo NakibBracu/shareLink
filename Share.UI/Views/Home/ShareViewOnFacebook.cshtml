@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Share on Facebook";
+}
+
+<h2>Share on Facebook</h2>
+
+@using (Html.BeginForm("ShareViewOnFacebook", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea class="form-control" id="message" name="message"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Share</button>
+}
