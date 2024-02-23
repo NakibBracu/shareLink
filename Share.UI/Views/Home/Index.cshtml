@@ -21,10 +21,48 @@
         <a href="mailto:?subject=Your%20Subject&body=Check%20out%20this%20link:%20@https://www.youtube.com/watch?v=f7BJFTEbc10">Share via Gmail</a> <br />
         <a href="https://www.pinterest.com/pin/create/button/?url=https://www.youtube.com/watch?v=f7BJFTEbc10&media=image_url&description=Your%20Description%20Here" target="_blank">Share on Pinterest</a> <br />
         <a href="https://twitter.com/intent/tweet?url=https://www.youtube.com/watch?v=f7BJFTEbc10&text=Your%20Tweet%20Text%20Here" target="_blank">Share on Twitter</a>
+        <div id="fb-root"></div>
+        <a href="javascript:;" class="messenger-wrap" onclick="messengerShare()">
+            <i class="fab fa-facebook-messenger"></i>
+            <span>Share on Messenger</span>
+        </a>
+        <a href="https://api.whatsapp.com/send?text=https://www.youtube.com/watch?v=f7BJFTEbc10/" data-action="share/whatsapp/share">
+            <span>Share on whatsapp</span>
+        </a>
     </div>
 </div>
 
+
+    <script async defer crossorigin = "anonymous" 
+    src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId={801810641775688}&autoLogAppEvents=1" 
+    nonce = "ywRETNx8" ></script>
+
 <script>
-    var currentPageUrl = window.location.href;
-    console.log(currentPageUrl);
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '{801810641775688}',
+            xfbml: true,
+            version: 'v2.9'
+        });
+        FB.AppEvents.logPageView();
+    };
+    function isMobile() {
+        const toMatch = [/Android/i, /webOS/i, /iPhone/i, /iPad/i, /iPod/i, /BlackBerry/i, /Windows Phone/i];
+        return toMatch.some((toMatchItem) => {
+            return navigator.userAgent.match(toMatchItem);
+        });
+    }
+    function messengerShare() {
+        url = 'https://reeteshghimire.com.np/';
+        if (isMobile()) {
+            window.location.href = "fb-messenger://share/?link=" + encodeURIComponent(url);
+        } else {
+            FB.ui({
+                method: 'send',
+                link: url,
+                redirect_uri: url
+            });
+        }
+    }
 </script>
+
