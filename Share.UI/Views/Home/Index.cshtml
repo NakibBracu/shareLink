@@ -6,6 +6,12 @@
 @{
     var request = ViewContext.HttpContext.Request;
     string currentPageUrl = $"{request.Scheme}://{request.Host}{request.Path}{request.QueryString}";
+    string recipientEmail = "recipient@example.com";
+    string subject = "Check out this link!";
+    string link = "https://www.youtube.com/watch?v=f7BJFTEbc10";
+
+    string mailtoLink = $"mailto:{recipientEmail}?subject={subject}&body={link}";
+
 }
 
 <div class="text-center">
@@ -21,6 +27,8 @@
         <a href="mailto:?subject=Your%20Subject&body=Check%20out%20this%20link:%20@https://www.youtube.com/watch?v=f7BJFTEbc10">Share via Gmail</a> <br />
         <a href="https://www.pinterest.com/pin/create/button/?url=https://www.youtube.com/watch?v=f7BJFTEbc10&media=image_url&description=Your%20Description%20Here" target="_blank">Share on Pinterest</a> <br />
         <a href="https://twitter.com/intent/tweet?url=https://www.youtube.com/watch?v=f7BJFTEbc10&text=Your%20Tweet%20Text%20Here" target="_blank">Share on Twitter</a>
+       <br />
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.youtube.com/watch?v=f7BJFTEbc10" class="fa fa-linkedin"></a>
         <div id="fb-root"></div>
         <a href="javascript:;" class="messenger-wrap" onclick="messengerShare()">
             <i class="fab fa-facebook-messenger"></i>
@@ -29,6 +37,8 @@
         <a href="https://api.whatsapp.com/send?text=https://www.youtube.com/watch?v=f7BJFTEbc10/" data-action="share/whatsapp/share">
             <span>Share on whatsapp</span>
         </a>
+        <br />
+        <a href="@mailtoLink">Share via Email</a>
     </div>
 </div>
 
